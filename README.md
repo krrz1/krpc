@@ -1,8 +1,6 @@
 # krpc
 
-一共有8个版本迭代，后续两个为作者写的，前面部分是这位大佬https://github.com/he2121/MyRPCFromZero
-
-
+this is a RPC.
 
 ## RPC的概念
 
@@ -44,6 +42,9 @@ client 调用远程方法-> request序列化 -> 协议编码 -> 网络传输-> �
 - [version4版本](#4.MyRPC版本4)：自定义消息格式，支持多种序列化方式（java原生， json…）
 - [version5版本](#5.MyRPC版本5):   服务器注册与发现的实现，zookeeper作为注册中心
 - [version6版本](#MyRPC版本6):   负载均衡的策略的实现
+
+-------------------------------------------------------------------------(上述是这位大佬的https://github.com/he2121/MyRPCFromZero)
+
 - [version7版本](#7.MyRPC版本7):   客户端缓存服务地址列表, zookeeper监听服务提供者状态，更新客户端缓存，跨语言的RPC通信（protobuf）
 - [version8版本](#8.MyRPC版本8)： 集成spring框架，将service用自定义的注解标注即可自动注册
 
