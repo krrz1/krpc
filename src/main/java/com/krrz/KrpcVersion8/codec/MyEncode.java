@@ -8,15 +8,20 @@ import io.netty.handler.codec.MessageToByteEncoder;
 import lombok.AllArgsConstructor;
 
 /*
- *  编码  协议先 消息类型-序列化的方式-消息长度-消息内容
+ *  编码  协议先 协议魔数-消息类型-序列化的方式-消息长度-消息内容
  */
 @AllArgsConstructor
 public class MyEncode extends MessageToByteEncoder {
     private Serializer serializer;
 
+    //协议魔数 4字节
+    private static final int MAGIC_NUMBER = 0xCAFEBABE;
+
     @Override
     protected void encode(ChannelHandlerContext channelHandlerContext, Object msg, ByteBuf out) throws Exception {
         System.out.println(msg.getClass());
+        //声明协议包，Magic Number魔数，表识一个 MRF 协议包，0xCAFEBABE
+        out.writeInt(MAGIC_NUMBER);
         //写入消息类型
         if(msg instanceof RPCRequest){
             out.writeShort(MessageType.REQUEST.getCode());

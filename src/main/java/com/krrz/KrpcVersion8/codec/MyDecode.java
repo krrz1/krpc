@@ -3,14 +3,25 @@ package com.krrz.KrpcVersion8.codec;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.ByteToMessageDecoder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
+
 /*
  * 解码
  */
 public class MyDecode extends ByteToMessageDecoder {
+    private static final int MAGIC_NUMBER = 0xCAFEBABE;
+    private static final Logger logger = LoggerFactory.getLogger(MyDecode.class);
     @Override
     protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) throws Exception {
+        //读取协议包
+        int magic=in.readInt();
+        if(magic!=MAGIC_NUMBER){
+            logger.error("不识别的协议包: {}", magic);
+            return;
+        }
         //1.读取消息的类型
         short messageType = in.readShort();
         //现在只支持request和response请求
