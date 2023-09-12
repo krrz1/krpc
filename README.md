@@ -43,7 +43,9 @@ client 调用远程方法-> request序列化 -> 协议编码 -> 网络传输-> �
 - [version5版本](#5.MyRPC版本5):   服务器注册与发现的实现，zookeeper作为注册中心
 - [version6版本](#MyRPC版本6):   负载均衡的策略的实现
 
--------------------------------------------------------------------------(上述是这位大佬的https://github.com/he2121/MyRPCFromZero)
+-------
+
+
 
 - [version7版本](#7.MyRPC版本7):   客户端缓存服务地址列表, zookeeper监听服务提供者状态，更新客户端缓存，跨语言的RPC通信（protobuf）
 - [version8版本](#8.MyRPC版本8)： 集成spring框架，将service用自定义的注解标注即可自动注册
